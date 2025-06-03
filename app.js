@@ -1,39 +1,49 @@
-     ////js version
-// let value = document.createElement('h1')
-// value.innerHTML = 'hello world!';
+import React from "react";
+import ReactDOM from "react-dom/client";
 
-// let root = document.querySelector('.id')
-// root.appendChild(value);
-
-  //react version
-
-  let heading = React.createElement('h3',
-    {id: 'heading', xyz: 'abc'},
-    'hello world , my first react');
-
-  let root = ReactDOM.createRoot(document.querySelector('.root'));
-
-  root.render(heading);
-
-//  console.log(heading)
-//  console.log(root)
+//react element 
+const heading = React.createElement("h3", {id: 'heading', className:"hello"}, "React Element");
 
 
-  //nested element
-  let parent = React.createElement('div', {id: 'parent'},[
-  React.createElement('div', {id: 'child'},
-    [ React.createElement('h1', {id: 'sibling'}, 'i am sibling 1'),
-      React.createElement('h2', {id: 'sibling'}, 'i am sibling 2'),
-      React.createElement('h3', {id: 'sibling'}, 'i am sibling 3')
-    ]),
-      React.createElement('div', {id: 'chil2'},
-    [ React.createElement('h3', {id: 'sibling'}, 'i am sibling of c2'),
-      React.createElement('h3', {id: 'sibling'}, 'i am sibling of c2'),
-      React.createElement('button', {id: 'sibling'}, 'i am sibling of c2 button')
-    ])
-  ]);
-  let root2 = ReactDOM.createRoot(document.querySelector('.root2'));
+//react elemt using jsx
+const jsxheading = <span className="class1" id="id1">
+  JSX React Element
+  </span>;
+console.log(jsxheading)
 
-  root2.render(parent);
+const root = ReactDOM.createRoot(document.querySelector("div"))
+// root.render(jsxheading)
 
 
+//components 
+// types => class based and functional componeneets
+//react functional component
+const FunctionalComp = () => {
+  return <span className="new1">hello i am functional component</span>
+}
+
+const FunctionalComp2 = () => <span className="new1">hello i am functional component</span>
+
+//shorthand version
+const FunctionalComp3 = () => (
+  <div id="container">
+        <Secondcomponent />
+        <Secondcomponent></Secondcomponent> 
+        {Secondcomponent()}
+       <span className="new1">hello i am functional component</span>
+  </div>
+)
+root.render(<FunctionalComp3 />)
+
+
+let value = 2000;
+
+
+const Secondcomponent = () => (
+  <div id="children">
+    {jsxheading}
+    <p>{value}</p>
+    {20+30}
+    <p>i am a component composistion</p>
+  </div>
+)

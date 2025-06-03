@@ -1,0 +1,31 @@
+{
+  "name": "react-course",
+  "version": "1.0.0",
+  "description": "this is the react course by namaste react",
+  "homepage": "https://github.com/rohank-007/Namaste-React#readme",
+  "bugs": {
+    "url": "https://github.com/rohank-007/Namaste-React/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rohank-007/Namaste-React.git"
+  },
+  "license": "ISC",
+  "author": "'rohan'",
+  "type": "commonjs",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "parcel": "^2.15.2"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "browsersList": [
+    "last 2 versions"
+  ]
+}
