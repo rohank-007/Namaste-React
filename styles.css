@@ -2,6 +2,7 @@
   font-family: roboto;
 }
 
+/* header */
 .header {
   display: flex;
   justify-content: space-between;
@@ -28,8 +29,21 @@
   border: 1px solid;
   border-radius: 4px;
   transition: all 0.1s;
-  /* box-shadow: inset 0px 0px 10px black; */
   cursor: pointer;
+}
+
+.filter {
+  cursor: pointer;
+  background-color: wheat;
+  border-style: solid;
+  border-radius: 5px;
+  margin: 10px;
+  transition: all 0.05s;
+  font-weight: 500;
+}
+.filter:active {
+  background-color: black;
+  color: wheat;
 }
 
 /* Body */
@@ -40,10 +54,8 @@
 .restaurant-container {
   display: flex;
   flex-wrap: wrap;
-  /* flex-grow: 1; */
   gap: 10px;
   align-items: center;
-  /* margin-left: 10px; */
   justify-content: start;
 }
 .res-Card {
@@ -67,5 +79,4 @@
 }
 .res-txt {
   padding-left: 10px;
-  /* line-height: 10px; */
 }
