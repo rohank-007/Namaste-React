@@ -1,18 +1,61 @@
 import RestaurentCard from "./RestaurentCard";
-import resList from "../utils/mockData";
+import { useState, useEffect } from "react";
 
-import { useState } from "react";
+import Shimmer from "./shimmer";
 
 const Body = () => {
-  const [listofRestaurent, setlistofRestaurent] = useState(resList);
-  return (
+  const [listofRestaurent, setlistofRestaurent] = useState([]);
+
+  const [filteredlistofRestaurent, setfilteredlistofRestaurent] = useState([]);
+
+  const [searchText, setsearchText] = useState("");
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const data = await fetch("https://dummyjson.com/recipes");
+
+    const json = await data.json();
+
+    setlistofRestaurent(json?.recipes);
+    setfilteredlistofRestaurent(json?.recipes);
+  };
+
+  return listofRestaurent.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
       <div className="filter-container">
+        <div className="search-container">
+          <input
+            type="text"
+            className="search-box"
+            value={searchText}
+            onChange={(e) => {
+              setsearchText(e.target.value);
+            }}
+          ></input>
+          <button
+            className="search-btn"
+            onClick={() => {
+              const filteredRestaurent = listofRestaurent.filter((res) =>
+                res.name.toLowerCase().includes(searchText.toLowerCase())
+              );
+              setfilteredlistofRestaurent(filteredRestaurent);
+              setsearchText("");
+            }}
+          >
+            Search
+          </button>
+        </div>
+
         <button
           className="filter"
           onClick={() => {
             const filteredList = listofRestaurent.filter(
-              (value) => value.info.avgRating >= 4
+              (value) => value.rating >= 4.5
             );
             setlistofRestaurent(filteredList);
           }}
@@ -22,8 +65,8 @@ const Body = () => {
       </div>
 
       <div className="restaurant-container">
-        {listofRestaurent.map((resValue) => {
-          return <RestaurentCard key={resValue.info.id} resData={resValue} />;
+        {filteredlistofRestaurent.map((resValue) => {
+          return <RestaurentCard key={resValue.id} resData={resValue} />;
         })}
       </div>
     </div>

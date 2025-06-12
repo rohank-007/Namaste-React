@@ -13,3 +13,9 @@
 - breaking app into seprate files for seprate components
   -modules import/export
 - reconciliation algorithm(react fiber), virtual DOM,
+
+#Ex.6:
+-monolith and microservice Architecture
+-react hook- useeffect()
+-fetch swiggys api
+-added search filter and cleared input logic error for search
